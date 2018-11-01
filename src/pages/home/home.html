@@ -1,0 +1,38 @@
+<ion-content padding xmlns="http://www.w3.org/1999/html">
+  <div id="olMAP" class="fullMap">
+  </div>
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <!--<ion-list>-->
+      <!--<ion-item *ngFor="let item of items">-->
+        <!--{{ item }}-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+
+  <ion-fab style="top: 10%" top right>
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list>
+      <button ion-button *ngFor="let thematicLayer of this.mapService.worldThematicLayers" (click)="this.enableThematicLayer(thematicLayer)" style="right: 70%">{{thematicLayer.displayName}}</button>
+    </ion-fab-list>
+  </ion-fab>
+  <button style="top: -1%" ion-fab mini (click)="clearGlobalThematicLayer()"><ion-icon name="close"></ion-icon></button>
+  <button ion-fab right bottom id="zoom" style="width: 30px; height: 30px; bottom: 8%;position: absolute" (click)="zoomIn()"><ion-icon name="add"></ion-icon></button>
+  <button ion-fab right bottom style="width: 30px; height: 30px; bottom: 2%;position: absolute" (click)="zoomOut()"><ion-icon name="remove"></ion-icon></button>
+  <button ion-fab right bottom style="color: #f53d3d;width: 30px; height: 30px; bottom: 15%;position: absolute" (click)="zoomToMyLocation()"><ion-icon name="pin"></ion-icon></button>
+  <ion-fab right bottom>
+    <button ion-fab><ion-icon name="logo-buffer"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-button *ngFor="let baseMap of this.mapService.baseMaps" (click)="this.enableBaseMap(baseMap)">{{baseMap.displayName}}</button>
+    </ion-fab-list>
+  </ion-fab>
+  <!--<ion-item>-->
+    <!--<ion-label>Draw</ion-label>-->
+      <!--<ion-select id="type" [(ngModel)]="Draw">-->
+        <!--<ion-option value="Point">Point</ion-option>-->
+        <!--<ion-option value="LineString">LineString</ion-option>-->
+        <!--<ion-option value="Polygon">Polygon</ion-option>-->
+        <!--<ion-option value="Circle">Circle</ion-option>-->
+      <!--</ion-select>-->
+  <!--</ion-item>-->
+
+  <map-drawer [map]="_map"></map-drawer>
+</ion-content>

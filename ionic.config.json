@@ -1,0 +1,7 @@
+{
+  "name": "ol_app2",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
